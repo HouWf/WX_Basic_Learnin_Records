@@ -1,0 +1,195 @@
+<!-- 组件基础 -- 容器内容组件 -->
+<!-- 
+   视图容器类组件
+   view
+   scroll-view
+   swiper
+   movable-view
+   cover-view
+  -->
+
+<view>
+  <!-- 
+  事件
+  点击
+  bindtap: 冒泡
+  catchtap: 非冒泡
+ -->
+  <view class="tapView">
+    <view bindtap="fatherClickMe" data-name="父视图携带数据">
+      <view class="btn" catchtap="navigateToBaseAss">跳转基础内容组件</view>
+      <view class="btn" bindtap="clickMe" capture-bind:tap='captureTap'>点击我bindtap</view>
+      <view class="btn" catchtap="catchMe" data-name="catchtap">点击我catchtap</view>
+    </view>
+  </view>
+
+  <!-- 
+    view
+    hover-class 按下去的样式
+    hover-start-time 按下后延迟时间 
+    hover-stay-time 手指离开后维持时间
+    hover-stop-propagation 父节点是否显示点击态
+   -->
+  <view class="section">
+    <view class="vw" hover-class="vw-hover-container" hover-stop-propagation="true" hover-start-time="500"
+      hover-stay-time="300"></view>
+  </view>
+
+  <!-- 
+    scroll-view
+    scroll-x 允许横向滚动
+    scroll-y 允许纵向滚动
+    upper-threshold 距离顶部/左边多远时 触发scolltouper事件 
+    lower-threshold 距离底部/右边多远时 ……
+    scroll-top  横向滚动条位置
+    scroll-left 纵向滚动条位置
+    scroll-into-view 值应为某个子元素id，设置那个方向可滚动，这那个方向滚动该元素
+    scroll-with-animation 滚动条位置使用动画效果
+    enable-back-to-top 点击顶部statusbar是否允许滚动到顶部
+    bindscrolltoupper 滚动到顶部/左边 会触发scrolltoupper事件
+    bindscrolltolower ……
+    bindscroll 滚动时触发，
+   -->
+  <view class="sc-parent">
+    <scroll-view class="scv" 
+    style="height: 200rpx"
+     scroll-y 
+     bindscrolltoupper="upper" 
+     bindscrolltolower="lower" 
+     bindscroll="scroll" 
+     scroll-top="{{scrollTop}}"
+     scroll-into-view="{{toView}}"
+     enable-back-to-top="true"
+     scroll-with-animation="true"
+     >
+      <view id="green" class="scroll-view-item bc_green"></view>
+      <view id="red" class="scroll-view-item bc_red"></view>
+      <view id="yellow" class="scroll-view-item bc_yellow"></view>
+      <view id="blue" class="scroll-view-item bc_blue"></view>
+    </scroll-view>
+
+    <view class="btn-area">
+      <button size="mini" catchtap="scrollButtonToTap">click me to scroll into view</button>
+      <button size="mini" catchtap="scrollButtonToMove">click me to scroll</button>
+    </view>
+  </view>
+
+
+    <!-- 
+      swiper
+      indicator-dots: 是否显示面板指示器
+      indicator-color 指示器颜色
+      indicator-active-color 选中的颜色
+      autoplay 自动切换
+      current 当前滑块的index
+      current-item-id 当前滑块的item-id 
+      interval 切换时间间隔
+      duration 动画时长
+      circular 是否采用衔接滑动
+      vertical 是否是纵向滑动
+      previous-margn 前边距 可用于漏出前一项的一小部分
+      next-margn 后边距……
+      display-multiple-items 同时显示的滑块数量
+      skip-hidden-item-layout  是否跳过未显示的滑块布局，设置为true会优化性能，但是会丢失隐藏状态滑块布局
+      bindchange current改变是触发change事件
+      bindanimationfinish 动画结束时会触发animation事件
+     -->
+     <view class="sc-parent">
+        <swiper 
+        indicator-dots="false"
+        indicator-color="rgba(0, 0, 0, .3)"
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        bindchange="swipperChange"
+        bindanimationfinish="swipperAnimationfinish"
+        current="1"
+      >
+        <block wx:for="{{background}}" wx:key='*this'>
+          <swiper-item>
+            <view class="swiper-item {{item}}"></view>
+          </swiper-item>
+        </block>
+      </swiper>
+     </view>
+
+     <!-- 
+
+      movable-area
+      scale-area 当里面的movable-view设置为支持双指缩放时，
+                  设置此值可将缩放手势生效区域修改为整个movable-area
+
+      movable-view
+      direction 移动方向 all、vertical、horizontal、none
+      x x轴方向偏移，如果x不在可移动范围内 会自动移动到范围内，改变X会触发动画
+      y ……
+      disable 是否禁用
+      scale 是否支持双指缩放
+      scale-min 
+      scale-max
+      scale-value
+      animation 是否使用动画
+      inertia 是否带有惯性
+      out-of-bounds 超过可移动区域后 是否还可以移动
+      damping 阻尼系数，弹簧效果控制越界后回弹动画，越大移动越快
+      firction 摩擦系数，用于控制惯性滑动动画，越大摩擦力越大，滑动停止越快
+      bindchange 拖动过程中触发事件
+      bindscale 缩放过程触发事件
+      htouchmove 初次触摸时横向移动触发事件
+      vtouchmove 初次触摸时纵向一定触发事件
+      -->
+     <view class="sc-parent">
+
+       <movable-area class="move-are" scale-area="true">
+            <movable-view
+              class="move-view"
+              x="{{x}}"
+              y="{{y}}"
+              direction="all"
+              inertia="true"
+              out-of-bounds="true"
+              inertia
+              scale
+              scale-max="3"
+              scale-min="0.5"
+            >
+            </movable-view> 
+       </movable-area>
+       <view class="btn-area">
+         <button size="mini" catchtap="movableTapChangePosition">移动到指定位置</button>
+       </view>
+
+       <view class="btn-area">move view 区域大于area</view>
+       <movable-area class="move-are" scale-area="true">
+            <movable-view
+            class="move-view big-move-view"
+            x="{{x}}"
+            y="{{y}}"
+            direction="all"
+            inertia="true"
+            >
+            </movable-view> 
+       </movable-area>
+       
+    </view>
+
+    <!-- 
+      cover-view、cover-image
+      可以覆盖客户端原生空间上
+      可覆盖的原生组件包括 map、video、canvas、camera、live-player、live-pusher
+      cover-view 只能嵌套cover-view和cover-image,可在 cover-view 中使用 button
+
+      scroll-top 偏移量
+     -->
+     <view class="sc-parent">
+       <map name="map" longitude="113.324520" latitude="23.099994">
+         <!-- <cover-image src=""></cover-image> -->
+        <cover-view class="father-cover">
+          <cover-view class="cover-item cover-1"></cover-view>
+          <cover-view class="cover-item cover-2"></cover-view>
+          <cover-view class="cover-item cover-3"></cover-view>
+        </cover-view>
+       </map>
+     </view>
+
+</view>

@@ -1,0 +1,16 @@
+
+<import src="../template/customcell.wxml"></import>
+
+<view class="body">
+  <view class="topview">
+    <input type="text" name="" id="inputView" class="input_view" placeholder="请输入内容" />
+  </view>
+
+  <scroll-view class="tableview">
+    <block wx:for="{{tabitems}}" wx:key="{{item.id}}">
+      <view class="section">
+        <template is='customcell' data="{{item}}"></template>
+      </view>
+    </block>
+  </scroll-view>
+</view>

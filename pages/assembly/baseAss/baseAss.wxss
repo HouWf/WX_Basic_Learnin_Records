@@ -1,0 +1,44 @@
+/* pages/assembly/baseAss/baseAss.wxss */
+
+.sc-parent {
+  margin-top: 20rpx;
+}
+
+.icon-box {
+  display: flex;
+}
+
+.icon-box-ctn {
+  margin: auto 0rpx;
+}
+
+.icon-box-title {
+  font-weight: bold;
+}
+
+.icon-box-desc {
+  font-size: 30rpx;
+  color: lightgray
+}
+
+.div_class {
+  display: inline-block;
+  padding: 0 10rpx;
+  border: 1rpx solid red;
+  margin-top: 10rpx;
+}
+
+
+.progress-box {
+  width: 100%;
+  padding: 10rpx;
+  display: flex;
+}
+
+progress {
+  width: 80%;
+}
+
+.progress-cancel {
+  margin-left: 10rpx;
+}

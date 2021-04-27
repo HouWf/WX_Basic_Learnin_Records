@@ -1,0 +1,8 @@
+<template name="customcell">
+  <view class="row" bindtap="didSelectedIndex" data-item="{{item}}">
+    <view class="row_left">
+      <view class="title">{{item.title}}</view>
+      <view class="des">{{item.des}}</view>
+    </view>
+  </view>
+</template>

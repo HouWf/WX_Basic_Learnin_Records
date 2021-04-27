@@ -1,0 +1,32 @@
+
+
+/**
+ * wxml引入wxs
+ * <wxs src="路径" module="名称" />
+ **/
+
+/**
+ * 在.wxs模块中引用其他 wxs 文件模块，可以使用 require 函数。
+ * 引用的时候，要注意如下几点：
+  1、只能引用 .wxs 文件模块，且必须使用相对路径。
+  2、wxs 模块均为单例，wxs 模块在第一次被引用时，会自动初始化为单例对象。多个页面，多个地方，多次引用，使用的都是同一个 wxs 模块对象。
+  3、如果一个 wxs 模块在定义之后，一直没有被引用，则该模块不会被解析与运行。 
+ * */ 
+// 引入其他wxs
+var newTol = require("./newWxsTools.wxs");
+
+function wxsIndexOf(arr, value){
+  if (arr.indexOf(value)) {
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+
+module.exports.wxsIndexOf = wxsIndexOf;
+
+// module.exports = {
+//   metho1 : m1,
+//   metho2 : m2
+// }

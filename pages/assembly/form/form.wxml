@@ -1,0 +1,436 @@
+<!-- 
+  表单组件
+  button    按钮
+  checkbox  多选
+  form      表单
+  input     输入
+  label     简单标签
+  picker    弹出选择视图
+  picker-view 页面选择视图
+  radio     单选
+  slider    滑块
+  switch    切换
+  text-area 与input相同 多了个auto-height属性，自动调整高度 
+ -->
+<view class="parent">
+  <!-- 
+      button
+      size 按钮大小 string类型
+           可选值：
+                default、mini
+      type 按钮样式
+           可选值：
+                primary: 绿色
+                default: 白色
+                warn: 红色
+      plain 是否镂空
+      disable 是否可用
+      loading 是否带loading图标
+      form-type 用于 form 组件，点击分别会触发 form 组件的 submit/reset 事件
+            可选值：
+                submit 提交表单
+                reset 重置表单
+      open-type 微信开放能力
+            可选值：
+                contact: 打开客服会话，如果用户在会话中点击消息卡片后返回小程序，
+                         可以从 bindcontact 回调中获得具体信息
+                share: 触发转发
+                getPhoneNumber: 获取用户手机号，可以从bindgetphonenumber回调中获取到用户信息
+                getUserInfo: 获取用户信息，获取用户信息，可以从bindgetuserinfo回调中获取到用户信息
+                launchApp: 打开APP，可以通过app-parameter属性设定向APP传的参数
+                openSetting: 打开授权设置页
+                feedback: 打开意见反馈页面
+      hover-class 按下去的样式
+      hover-stop-propagation 是否阻止本节点的父节点出现点击态
+      hover-start-time 按多久出现点击态
+      lang 指定返回用户信息的语言，zh_CN、zh_TW、en
+      session-form 会话来源，open-type="contact"时有效
+      send-message-title 会话内消息卡片标题，open-type="contact"时有效
+      send-message-path 会话内消息卡片点击跳转小程序路径，open-type="contact"时有效
+      send-message-img 会话内消息卡片图片，open-type="contact"时有效
+      show-message-card 是否显示会话内消息卡片，设置此参数为 true，
+                        用户进入客服会话会在右下角显示"可能要发送的小程序"提示，
+                        用户点击后可以快速发送小程序消息，open-type="contact"时有效
+      app-parameter 打开 APP 时，向 APP 传递的参数，open-type=launchApp时有效
+
+      >>>>>>> event <<<<<<
+      bindgetuserinfo 用户点击该按钮时，会返回获取到的用户信息
+                      回调的detail数据与wx.getUserInfo返回的一致，open-type="getUserInfo"时有效
+      bindcontact 客服消息回调，open-type="contact"时有效
+      bindgetphonenumber 获取用户手机号回调，open-type=getPhoneNumber时有效
+      binderror 当使用开放能力时，发生错误的回调，open-type=launchApp时有效
+      bindopensetting 在打开授权设置页后回调，open-type=openSetting时有效
+      bindlaunchapp 打开 APP 成功的回调，open-type=launchApp时有效
+     -->
+  <button type="default">按钮</button>
+
+  <!-- 
+      check-box
+      value checkbox标识，选中时触发checkbox-group的 change 事件，并携带 checkbox 的 value
+      disabled 是否可用
+      checked 当前是否选中，可用来设置默认选中
+      color checkbox的颜色，同css的color
+     -->
+  <view class="container">
+    <view class="page-body">
+      <view class="page-section page-section-gap">
+        <view class="page-section-title">默认样式</view>
+        <label class="checkbox">
+          <checkbox value="cb" checked="true">选中</checkbox>
+        </label>
+        <label class="checkbox">
+          <checkbox value="cb">未选中</checkbox>
+        </label>
+        <label class="checkbox">
+          <checkbox value="cb" disabled="true">不可用</checkbox>
+        </label>
+      </view>
+
+      <view class="page-section">
+        <view class="page-section-title">推荐展示样式</view>
+        <view class="weui-cells weui-cells-after-title">
+          <checkbox-group bindchange="checkboxChange">
+            <label class="weui-cell weui-check_label" wx:for="{{items}}" wx:key="{{item.value}}">
+              <view class="weui-cell_hd">
+                <checkbox value="{{item.value}}" checked="item.checked">{{item.name}}</checkbox>
+              </view>
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- 表单组件
+    report-submit 是否返回formid用于发送模板消息
+    report-submit-timeout 等待一段时间（毫秒数）以确认 formId 是否生效。
+                          如果未指定这个参数，formId 有很小的概率是无效的（如遇到网络失败的情况）。
+                          指定这个参数将可以检测 formId 是否有效，以这个参数的时间作为这项检测的超时时间。
+                          如果失败，将返回 requestFormId:fail 开头的 formId
+    bindsubmit 携带 form 中的数据触发 submit 事件，
+                event.detail = {value : {'name': 'value'} , formId: ''}
+    bindreset 表单重置时会触发 reset 事件
+  -->
+  <view class="container">
+    <view class="page-body">
+      <form bindsubmit="formSubmit" bindreset="formReset">
+
+        <view class="page-section page-section-gap">
+          <view class="page-section-title">switch</view>
+          <switch name="switch"></switch>
+        </view>
+
+        <view class="page-section page-section-gap">
+          <view class="page-section-title">radio</view>
+          <radio-group name="radio">
+            <label>
+              <radio value="radio1">选项1</radio>
+            </label>
+            <label>
+              <radio value="radio2">选项2</radio>
+            </label>
+          </radio-group>
+        </view>
+
+        <view class="page-section page-section-gap">
+          <view class="page-section-title">check</view>
+          <checkbox-group name="checkbox">
+            <label>
+              <checkbox value="checkbox1">选项一</checkbox>
+            </label>
+            <label>
+              <checkbox value="checkbox2">选项2</checkbox>
+            </label>
+          </checkbox-group>
+        </view>
+
+        <view class="page-section page-section-gap">
+          <view class="page-section-title">slider</view>
+          <slider value="50" name="slider" show-value=""></slider>
+        </view>
+
+        <view class="page-section page-section-gap">
+          <view class="page-section-title">input</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cel weui-cell_input">
+              <view class="weui_bd" style="margin: 30rpx 0">
+                <input type="text" class="weui-input" name="input" placeholder="这是一个输入框"
+                  style="border: 1rpx solid lightgray; font-size: 30rpx"></input>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="btn-area">
+          <button style="margin:30rpx 0" type="primary" form-type="submit">submit</button>
+          <button style="margin:30rpx 0" type="primary" form-type="reset">reset</button>
+        </view>
+
+      </form>
+    </view>
+  </view>
+
+  <!-- 
+    input
+    value 原始值
+    type 键盘类型
+          text 文本输入键盘
+          number 数字输入键盘
+          idcard 身份证输入键盘
+          digit 带小数点的数字键盘
+    password 是否是密码类型
+    placeholder 占位
+    placeholder-style 占位样式
+    placeholder-class 占位样式类
+    disable 是否可用
+    maxlength 最大输入长度，-1 无限制
+    cursor-spacing 指定光标与键盘的距离，
+                    取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离
+    auto-foucs 是否自动聚焦（使用focus）
+    focus 是否自动聚焦
+    confirm-type 键盘右下角文字，仅在type="text"时生效
+                 send "发送"
+                 search "搜索"
+                 next "下一个"
+                 go "前往"
+                 done "完成"
+    confirm-hold 点击键盘右下角时是否键盘保持不收起
+    always-embed 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效)
+    cursor  指定光标位置number
+    selection-start 光标起始位置，自动聚集时有效，需与selection-end搭配使用 number
+    selection-end 光标终止位置
+    adjust-position 键盘弹起时，是否自动上推页面
+    hold-keyboard focus时，点击页面的时候不收起键盘
+
+    >>>>> 事件 <<<<<
+    bindinput 键盘输入时触发，
+              event.detail = {value, cursor, keyCode}，keyCode 为键值，
+              2.1.0 起支持，处理函数可以直接 return 一个字符串，将替换输入框的内容。
+    bindfocus 输入框聚焦时触发，
+              event.detail = { value, height }，height 为键盘高度，
+              在基础库 1.9.90 起支持
+    bindblur 输入框失去焦点时触发，event.detail = {value: value}
+    bindconfirm 点击完成按钮时触发，event.detail = {value: value}
+    bindkeyboardheightchange 键盘高度发生变化的时候触发此事件，
+                             event.detail = {height: height, duration: duration}
+   -->
+
+  <view class="page-body">
+
+    <view class="page-section">
+      <view class="weui-cell_title">可以自动聚焦的input</view>
+      <view class="weui-cells weui-cell_input">
+        <input class="weui-input" type="text" auto-focus="true" focus="ture" placeholder="将会获取焦点"></input>
+      </view>
+    </view>
+
+    <view class="page-section">
+      <view class="weui-cell_title">控制最大长度的input</view>
+      <view class="weui-cells weui-cell_input">
+        <input class="weui-input" type="text" maxlength="10" placeholder="最大长度10字符"></input>
+      </view>
+    </view>
+
+    <view class="page-section">
+      <view class="weui-cell_title">获取实时输出{{inputValue}}</view>
+      <view class="weui-cells weui-cell_input">
+        <input class="weui-input" type="text" placeholder="输入同步到view中" bindinput="bindKeyInput"></input>
+      </view>
+    </view>
+
+    <view class="page-section">
+      <view class="weui-cell_title">控制输入的input</view>
+      <view class="weui-cells weui-cell_input">
+        <input class="weui-input" type="text" placeholder="连续两个1会自动变成2" bindinput="bindReplaceInput"></input>
+      </view>
+    </view>
+
+    <view class="page-section">
+      <view class="weui-cell_title">控制键盘的input</view>
+      <view class="weui-cells weui-cell_input">
+        <input class="weui-input" type="text" placeholder="输入123会自动收起键盘" bindinput="bindHideKeyboard"></input>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 
+     label 标签组件，增加关联组件的可用性
+     和其他表单绑定使用，当点击label组件时会触发相关组件的点击行为
+     可绑定的组件为button、switch、radio、checkbox
+     for 绑定控件的id
+    -->
+  <view class="page-section">
+    <view class="weui-cell_title">label绑定组件</view>
+    <view class="weui-cells weui-cell_input">
+      <view class="label-1" wx:for="{{items}}">
+        <label>
+          <checkbox value="{{item.name}}" checked="{{item.checked}}"></checkbox>
+          <text class="label-1-text">{{item.value}}</text>
+        </label>
+        <!-- <label class="label-2-text" for="{{item.name}}"><text>{{item.name}}</text></label> -->
+      </view>
+    </view>
+  </view>
+
+  <!-- 
+    picker 从底部弹出的选择器
+    header-text 选择器的标题，仅安卓可用
+    disable 是否可用
+    bindcancel 取消选择时触发
+    mode 选择器类型
+          可选值：
+          selector 普通选择器
+          multiSelector 多列选择器
+          time 时间选择器
+          date 日期选择器
+          region 省市区选择器
+
+
+          
+   -->
+  <view class="page-body">
+    <!-- 
+      普通选择器 mode = selector 
+      属性可选值：
+            range  数据源，mode 为 selector 或 multiSelector 时，range 有效
+            range-key 当 range 是一个 Object Array 时，
+                      通过 range-key 来指定 Object 中 key 的值作为选择器显示内容
+            value 表示选择了 range 中的第几个（下标从 0 开始）
+            bindchange 绑定的事件
+     -->
+    <view class="page-section">
+      <view class="weui-cell_title">普通选择器</view>
+      <!-- range为字符串 -->
+      <picker mode="selector" value="{{index}}" range="{{array}}" bindchange="bindPickerChange">
+        <view class="picker">
+          当前选择：{{array[index]}}
+        </view>
+      </picker>
+      <!-- range为对象 -->
+      <picker mode="selector" value="{{index}}" range="{{objectArray}}" range-key="name" bindchange="bindPickerChange">
+        <view class="picker">
+          当前选择：{{array[index]}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 
+      多列选择器 mode = selector 
+      属性可选值：
+            range  数据源，mode 为 selector 或 multiSelector 时，range 有效
+            range-key 当 range 是一个 Object Array 时，
+                      通过 range-key 来指定 Object 中 key 的值作为选择器显示内容
+            value 表示选择了 range 中的第几个（下标从 0 开始）
+            bindchange 绑定的事件，value 改变时触发 change 事件
+            bindcolumnchange 列改变时触发
+     -->
+    <view class="page-section">
+      <view class="weui-cell_title">多列选择器</view>
+      <picker mode="multiSelector" value="{{multiIndex}}" range="{{multiArray}}" bindchange="bindMultiPickerChange"
+        bindcolumnchange="bindMultiPickerColumnChange">
+        <view class="picker">
+          当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 
+      时间选择器time
+      value 选中的时间 hh:mm
+      start 表示有效时间范围的开始，字符串格式为"hh:mm"
+      end 表示有效时间范围的结束，字符串格式为"hh:mm"
+      bindchange value 改变时触发 change 事件，event.detail = {value}
+     -->
+    <view class="page-section">
+      <view class="weui-cell_title">时间选择器</view>
+      <picker mode="time" value="{{currentTime}}" start="00:00" end="24:00" bindchange="bindTimeChange">
+        <view class="picker">
+          当前选择：{{currentTime}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 
+      日期选择器 date
+      value 表示选中的日期，格式为"YYYY-MM-DD"
+      start 表示开始时间 
+      end 表示结束时间
+      fields 有效值 year,month,day，表示选择器的粒度
+      bindchange 绑定事件
+     -->
+    <view class="page-section">
+      <view class="weui-cell_title">日期选择器</view>
+      <picker mode="date" value="2021-03-31" start="2021-01-01" end="2021-04-30" fields="day"
+        bindchange="bindDateChange">
+        <view class="picker">
+          当前选择：{{currentDate}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 
+      省市区选择器 region
+      value 表示选中的省市区，默认选中每一列的第一个值
+      custom-item 可为每一列的顶部添加一个自定义的项
+      bindchange value 改变时触发 change 事件，event.detail = {value, code, postcode}，
+                  其中字段 code 是统计用区划代码，postcode 是邮政编码
+     -->
+    <view class="page-section">
+      <view class="weui-cell_title">省市区选择器</view>
+      <picker mode="region" value="{{region}}" custom-item="{{customItem}}" bindchange="bindRegionChange">
+        <view class="picker">
+          当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
+        </view>
+      </picker>
+    </view>
+
+  </view>
+
+  <!-- 
+    picker-view
+    value  array类型 数组中的数字依次表示 picker-view 内的 picker-view-column 选择的第几项
+          （下标从 0 开始），数字大于 picker-view-column 可选项长度时，选择最后一项。
+    indicator-style 设置选择器中间选中框的样式
+    indicator-class 设置选择器中间选中框的类名
+    mask-style 设置蒙层的样式
+    mask-class 设置蒙层的类名
+    >>>>> 事件 <<<<<
+    bindchange 滚动选择时触发change事件，
+                event.detail = {value}；
+                value为数组，表示 picker-view 内的 picker-view-column 当前选择的是第几项（下标从 0 开始）
+    bindpickstart 当滚动选择开始时候触发事件
+    bindpickend 当滚动选择结束时候触发事件
+   -->
+  <view class="page-body">
+    <view class="selected-date">{{year}}年{{month}}月{{day}}日{{isDaytime ? "白天" : "夜晚"}}</view>
+    <picker-view indicator-style="height: 50rpx" style="width: 100%; height:300rpx" value="{{pickerViewValue}}" bindchange="pickerViewChange">
+
+      <picker-view-column>
+        <view wx:for="{{years}}" wx:key="{{years}}" style="line-height: 50rpx; text-align: center">{{item}}年</view>
+      </picker-view-column>
+
+      <picker-view-column>
+        <view wx:for="{{months}}" wx:key="{{months}}" style="line-height: 50rpx; text-align: center">{{item}}月</view>
+      </picker-view-column>
+
+      <picker-view-column>
+        <view wx:for="{{days}}" wx:key="{{days}}" style="line-height: 50rpx; text-align: center">{{item}}日</view>
+      </picker-view-column>
+
+      <picker-view-column>
+        <view class="icon-container" style="background: red">
+          <image class="picker-icon" src="{{dayUrl}}" />
+        </view>
+        <view class="icon-container" style="background: red">
+          <image src="{{noDayUrl}}" style="background: green" />
+        </view>
+      </picker-view-column>
+
+      <!-- https://developers.weixin.qq.com/xcode/program/mp_picker_view/lib/daytime.png -->
+      <!-- https://developers.weixin.qq.com/xcode/program/mp_picker_view/lib/night.png -->
+    </picker-view>
+  </view>
+
+</view>

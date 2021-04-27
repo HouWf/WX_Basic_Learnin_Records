@@ -1,0 +1,22 @@
+<form>
+
+  <view class="section">
+    <view class="row">
+      <view class="row_container">
+
+        <view class="left-view">
+          <image src="../img/interface_sel.png" class="icon-view home-icom"></image>
+          <view class="city-selct-title">选择地区</view>
+        </view>
+        
+        <view class="right-view">
+          <view class="select-wrap">
+            <select id="select" options="{{options}}" key="city_id" text="city_name" bind:change="change"></select>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+</form>

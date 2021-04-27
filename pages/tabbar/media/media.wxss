@@ -1,0 +1,13 @@
+/* pages/tabbar/media/media.wxss */
+@import '../../template/customcell.wxss';
+
+.body {
+  background-color: lightgrey;
+  height: 100%;
+  width: 100%;
+}
+
+.tableview {
+  position: relative;
+  height: calc(100% - 60rpx);
+}

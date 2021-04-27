@@ -1,0 +1,24 @@
+
+
+.row {
+  background-color: white;
+  margin: 10rpx 15rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+
+.row_left {
+  position: relative;
+  margin-right: 100rpx;
+}
+
+.title {
+  color: black;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.des{
+  color: aqua;
+  font-size: 20rpx;
+}

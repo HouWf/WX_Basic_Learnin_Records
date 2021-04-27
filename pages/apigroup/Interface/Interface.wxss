@@ -1,0 +1,59 @@
+/* pages/apigroup/Interface/Interface.wxss */
+
+.body{
+  background-color: lightgray;
+}
+
+.parent{
+  background-color: lightgray;
+}
+
+/* .section{
+  background-color: white;
+} */
+
+.section_top {
+  border: 1rpx lightgray solid;
+  padding: 20rpx 10rpx;
+  background-color: white;
+  margin: 20rpx 0;
+}
+
+.section_title {
+  font-size: 35rpx;
+  font-weight: bold;
+}
+
+.row_container {
+  background-color: white;
+  margin: 20rpx 0;
+  padding: 20rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row_title {
+  font-size: 40rpx;
+  width: calc(100% - 70rpx);
+}
+
+.row_des {
+  font-size: 30rpx;
+  color: gray;
+  width: calc(100% - 70rpx);
+}
+
+.acessary {
+  padding: 10rpx;
+  position: relative;
+  top: -50%;
+}
+
+.acessary_arrow {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+
+

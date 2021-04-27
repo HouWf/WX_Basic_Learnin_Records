@@ -1,0 +1,11 @@
+
+<import src="../../template/customcell"></import>
+<view class="body">
+  <scroll-view class="tableview">
+    <block wx:for="{{tabitems}}" wx:key="{{item}}">
+      <view class="section">
+        <template is='customcell' data="{{item}}"></template>
+      </view>
+    </block>
+  </scroll-view>
+</view>

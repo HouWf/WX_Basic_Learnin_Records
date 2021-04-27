@@ -1,0 +1,31 @@
+
+<wxs src="../../tools/wxsTools.wxs" module="wxstools" />
+
+<view class="body">
+
+  <view class="parent">
+
+    <view class="section">
+      <view class="section_top">
+        <view class="section_title">{{interactive.section_title}}</view>
+      </view>
+
+      <block wx:for="{{interactive.actions}}" wx:key="index">
+        <view class="row_container" catchtap="showIntrfaceMethod" data-method="{{item.title}}" data-index="{{index}}">
+          <view>
+            <view class="row_title">{{item.title}}</view>
+            <view class="row_des">{{item.action}}</view>
+          </view>
+          <view class="acessary">
+            <image src="../../img/arrow.png" class="acessary_arrow"></image>
+          </view>
+          <!-- 调试wxs用法 -->
+          <!-- <view>{{wxstools.wxsIndexOf('123', '1') ? 'yes' : 'no'}}</view> -->
+        </view>
+      </block>
+      
+    </view>
+
+  </view>
+
+</view>

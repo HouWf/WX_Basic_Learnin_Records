@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "select": "../template/select"
+  }
+
+}

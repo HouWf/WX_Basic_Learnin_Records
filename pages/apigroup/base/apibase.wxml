@@ -1,0 +1,6 @@
+
+<view class="parent">
+  <view class="section">
+    <button type="primary" bindtap="base64toArrayBufferMethod">转换buffer</button>
+  </view>
+</view>

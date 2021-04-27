@@ -1,0 +1,19 @@
+
+<view class="body">
+  <view class="mapParent">
+    <view class="mapSectionTitle">
+      <view class="mapTitle">地图</view>
+    </view>
+
+    <view class="mapContent">
+      <map class="map-view" name="map-content" id="map-id" longitude="113.324520" latitude="23.099994">
+        <cover-view class="cover-parent">
+          <cover-view class="cover-item cover-item-first"></cover-view>
+          <cover-view class="cover-item cover-item-next"></cover-view>
+          <cover-view class="cover-item cover-item-third"></cover-view>
+        </cover-view>
+      </map>
+    </view>
+
+  </view>
+</view>

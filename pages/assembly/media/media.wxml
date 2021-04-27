@@ -1,0 +1,178 @@
+
+<!-- 
+  媒体组件
+  audio 
+  image
+  video
+  camera
+  live-player
+  live-pusher
+ -->
+
+ <!-- 
+   audio
+   id 唯一标识符
+   src 资源地址
+   loop 是否循环
+   controls 是否显示默认控件
+   poster 默认控件上的音频封面的图片资源地址，如果 controls 属性值为 false 则设置 poster 无效
+   name  默认控件上的音频名称
+   author 默认控件上的作者名称
+
+   >>>>> 事件 <<<<<
+   binderror 当发生错误时触发 detail = {errMsg:MediaError.code}
+   bindplay 当开始播放时触发
+   bindpause 当暂停播放时触发
+   bindtimeupdate 当播放进度改变是触发 timeupdate 事件，detail = {currentTime, duration}
+   bindended 当播放到末尾时触发
+
+   MediaError.code相关说明
+      1 资源被用户禁止
+      2 网络错误
+      3 解码错误
+      4 不合适资源
+  -->
+  <view class="parent">
+    <audio src="{{audioUrl}}" author="{{audioAuthor}}" poster="{{audioPoster}}" name="{{audioName}}" id="myAudio" controls loop></audio>
+    <view class="action-class">
+      <button type="primary" bindtap="audioPlay">播放</button>
+      <button type="primary" bindtap="audioPause">暂停</button>
+      <button type="primary" bindtap="audio14">设置当前播放时间为14秒</button>
+      <button type="primary" bindtap="audioStart">回到开头</button>
+    </view>
+  </view>
+
+  <!-- 
+    video
+    属性地址 https://developers.weixin.qq.com/miniprogram/dev/component/video.html
+    src 资源地址
+    duration 指定视频时长
+    controls 是否显示原始控件
+    danmu-list 弹幕列表 Array<object>
+    danmu-btn 是否显示弹幕按钮，只在初始化时有效，不能动态变更
+    enable-danmu 是否可以发送弹幕,只在初始化时有效，不能动态变更
+    autoplay 是否自动播放
+    loop 是否循环播放
+    muted 是否静音
+    initial-time 指定视频初始播放位置
+    page-gesture 在非全屏模式下，是否开启亮度与音量调节手势（废弃，见 vslide-gesture）
+    vslide-gesture 在非全屏模式下，是否开启亮度与音量调节手势（同 page-gesture）
+    vslide-gesture-in-fullscreen 在全屏模式下，是否开启亮度与音量调节手势
+    direction 设置全屏时视频的方向，不指定则根据宽高比自动判断
+          可选值：
+                0 正常竖屏
+                90 逆时针旋转90度
+                -90 顺时针旋转90度
+    poster 视频封面的图片网络资源地址或云文件ID（2.3.0）。
+            若 controls 属性值为 false 则设置 poster 无效
+    show-mute-btn 是否显示静音按钮
+    title 视频标题
+    play-btn-position 播放按钮位置
+          可选值：
+                bottom controls bar 上
+                center 视频中间
+    enable-play-gesture 是否开启播放手势，双击播放/暂停
+    auto-pause-if-navigate 当跳转到本小程序的其他页面时，是否自动暂停本页面的视频播放
+    auto-pause-if-open-native 当跳转到其它微信原生页面时，是否自动暂停本页面的视频
+    ad-unit-id 视频前贴广告单元ID
+    ………………      
+   -->
+   <view class="parent">
+     <view class="page-section">
+       <video src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" 
+          id="myVideo" 
+          danmu-list="{{danmuList}}" 
+          enable-danmu 
+          danmu-btn 
+          controls 
+          show-center-play-btn="true" 
+          show-play-btn="true"
+          picture-in-picture-mode="['push', 'pop']"
+          binderror="{{videoError}}"
+          bindenterpictureinpicture="bindVideoEnterPictureInPicture"
+          bindleavepictureinpicture="bindleavepictureinpicture"
+          ></video>
+          <view style="margin: 30rpx auto; text-align: center" class="danmu-laben">弹幕内容</view>
+          <input type="text" style="margin: 30rpx auto;" bindblur="bindInputBlur" class="input" placeholder="在此输入弹幕内容" />
+          <button style="margin: 30rpx auto;" type="primary" bindtap="bindSendDanmu" form-type="submit">发送弹幕</button>
+          <navigator style="margin: 30rpx auto;" url="picture-in-picture" hover-class="other-navigator-hover">
+            <button type="primary" class="page-body-button" bindtap="bindPlayVideo">小窗模式</button>
+          </navigator>
+     </view>
+   </view>
+
+   <!-- 
+     camera
+     mode 应用模式，只在初始化时生效
+          可选值：
+              normal 相机模式
+              scanCode 扫码模式
+    resolution 分辨率 不支持动态修改
+          可选值：
+                low medium high
+    device-position 摄像头朝向
+          可选值：
+                front、back
+    flash 闪光灯
+          可选值：
+                auto、on、off、torch（长亮）
+    frame-size 指定期望的相机帧数据尺寸 
+          可选值：
+                small、medium、large
+    
+    >>>>> 事件 <<<<<
+    bindstop 摄像头在非正常终止时触发，如退出后台等情况
+    binderror 异常情况
+    bindinitdone 初始化完成时触发
+    bindscancode 扫码成功时触发，仅在mode="scanCode"时有效
+    -->
+    <view class="parent">
+      <camera device-position="back" flash="off" binderror="cameraError" style="width: 100%; height: 300px;"></camera>
+      <button type="primary" bindtap="takePhoto">拍照</button>
+      <view>预览</view>
+      <image mode="widthFix" src="{{cameraSrc}}"></image>
+    </view>
+    
+  <!-- 
+    image 图片
+    src 图片地址
+    mode 图片剪切，缩放模式
+          可选值：
+              缩放模式
+              scaleToFill 纵横比缩放图片，图片宽高铺满框架
+              aspectFil 保持纵横比缩放图片，使图片可以完全显示出来
+              aspectFill 只保持短边完整显示，使图片横向或者纵向完全显示出来
+              widthFix 宽度不变，高度自适应
+              heightFix 高度不变，宽度自动适应
+              裁剪模式
+              top 只显示图片的顶部区域
+              bottom 只显示底部区域
+              center 只显示中间区域
+              left 只显示图片左侧
+              right 只显示右侧
+              top left ……
+              top right …… 
+              bottom left ……
+              bottom right ……
+    webp 是否 默认不解析 webP 格式，只支持网络资源
+    lazy-load 是否 图片懒加载，在即将进入一定范围（上下三屏）时才开始加载
+    show-menu-by-longpress 是否 开启长按图片显示识别小程序码菜单
+
+    >>>>> 事件 <<<<<
+    binderror 加载失败时触发
+    bindload 当图片载入完毕时触发
+   -->
+  <view class="parent">
+    <view class="page-hd">
+      <text class="page-title">image</text>
+      <text class="page-des">图片</text>
+    </view>
+    <view class="page-bd">
+      <view class="section section-gap" wx:for="{{imageArray}}" wx:key="{{item}}">
+        <view class="section__title">{{item.text}}</view>
+        <view class="section__ctn">
+          <image mode="{{item.mode}}" src="{{src}}" style="width: 200px; height: 200px; background-color: #eeeeee;" binderror="imageError" show-menu-by-longpress lazy-load></image>
+        </view>
+      </view>
+    </view>
+  </view>

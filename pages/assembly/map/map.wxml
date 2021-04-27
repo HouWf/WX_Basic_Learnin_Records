@@ -1,0 +1,7 @@
+
+<view class="parent">
+  <view class="section">
+    <text>详情见扫码</text>
+    <image src="./map.jpg" mode="widthFix"></image>
+  </view>
+</view>

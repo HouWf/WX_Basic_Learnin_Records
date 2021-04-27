@@ -1,0 +1,23 @@
+/* pages/tabbar/media/map/mapApi.wxss */
+
+
+.mapParent {
+  width: 100%;
+  height: 100%;
+}
+
+.mapSectionTitle {
+  padding: 10rpx;
+}
+
+.mapTitle {
+  font-weight: bold;
+  font-size: 35rpx;
+  text-align: center;
+}
+
+
+.map-view {
+  width: 100%;
+  height: 500rpx;
+}

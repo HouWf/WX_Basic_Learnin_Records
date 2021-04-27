@@ -1,0 +1,53 @@
+
+<!-- 
+  导航
+  navigator  
+  functional-page-navigator 仅在插件中有效，用于跳转到插件功能页
+ -->
+
+ <!-- 
+   navigator
+   target 在哪个目标上发生跳转，默认当前小程序
+          可选值：
+                self 当前小程序
+                miniProgram 其他小程序
+   url 跳转地址
+   open-type 跳转方式
+          可选值：
+                navigate 对应 wx.navigateTo 或 wx.navigateToMiniProgram 的功能
+                redirect 对应 wx.redirectTo 的功能
+                switchTap 对应 wx.switchTab 的功能
+                reLaunch 对应 wx.reLaunch 的功能
+                navigateBack 对应 wx.navigateBack 的功能
+                exit 退出小程序，target="miniProgram"时生效
+
+    delta 当 open-type 为 'navigateBack' 时有效，表示回退的层数
+
+    app-id 当target="miniProgram"时有效，要打开的小程序 appId
+    path 当target="miniProgram"时有效，打开的页面路径，如果为空则打开首页
+    extra-data  需要传递给目标小程序的数据，
+                目标小程序可在 App.onLaunch()，App.onShow() 中获取到这份数据。
+                当target="miniProgram"时有效
+    version 当target="miniProgram"时有效，要打开的小程序版本
+          可选值：
+                develop
+                trial
+                release
+
+    hover-class 指定点击时的样式类，当hover-class="none"时，没有点击态效果
+    hover-stop-propagation 是否阻止本节点的祖先节点出现点击态
+    hover-start-time 按住后多久出现点击态，单位毫秒
+    hover-stay-time 手指松开后点击态保留时间，单位毫秒
+
+    >>>>> 事件 <<<<<
+    bindsuccess 当target="miniProgram"时有效，跳转小程序成功
+    bindfail 当target="miniProgram"时有效，跳转小程序失败
+    bindcomplete 当target="miniProgram"时有效，跳转小程序完成
+  -->
+
+  <view class="parent">
+    <navigator url="/pages/assembly/assembly?title=navigate" hover-class="navigator-hover">navigate跳转到新页面</navigator>
+    <navigator url="/pages/assembly/assembly?title=redirect" open-type="redirect" hover-class="navigator-hover">redirect跳转到新页面</navigator>
+    <navigator url="/pages/index/index" open-type="switchTab" hover-class="other-navigator-hover">switchTab跳转到新页面</navigator>
+    <navigator target="miniProgram" open-type="navigate" app-id="" path="" extra-data="" version="release">打开绑定的小程序</navigator>
+  </view>

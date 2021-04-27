@@ -1,0 +1,27 @@
+/* pages/tabbar/first.wxss */
+@import '../template/customcell.wxss';
+
+.body {
+  background-color: lightgrey;
+  height: 100%;
+  width: 100%;
+}
+
+.topview {
+  padding: 10rpx;
+}
+
+.input_view {
+  height: 50rpx;
+  background-color: white;
+  border: 1rpx solid gray;
+  font-size: 35rpx;
+  padding-left: 50rpx;
+  border-radius: 10rpx;
+}
+
+.tableview {
+  position: relative;
+  height: calc(100% - 60rpx);
+}
+

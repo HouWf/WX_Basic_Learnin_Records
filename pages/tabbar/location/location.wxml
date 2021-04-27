@@ -1,0 +1,8 @@
+
+<view class="body">
+
+  <view class="action">
+    <button bindtap="choosePoiAction">choosepoi</button>
+  </view>
+
+</view>

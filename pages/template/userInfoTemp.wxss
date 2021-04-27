@@ -1,0 +1,5 @@
+
+.userinfo {
+  border: 1rpx solid red;
+  padding: 10px;
+}

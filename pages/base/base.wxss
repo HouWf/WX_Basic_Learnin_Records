@@ -1,0 +1,32 @@
+/* pages/base/base.wxss */
+/* 引入外联样式 */
+@import '../template/userInfoTemp.wxss';
+
+.list {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.list:nth-of-type(5) {
+  margin-bottom: 10rpx;
+}
+
+.temp {
+  border: 1rpx solid red;
+  padding: 10rpx;
+}
+
+.temptitle {
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  font-weight: bold;
+}
+
+/* 
+  优先级
+  element   元素标签    1
+  .element  class     10
+  #element  id        100
+  style     内联       1000
+  !important   无穷大
+*/

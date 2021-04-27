@@ -1,0 +1,20 @@
+/* pages/tabbar/media/picture/picture.wxss */
+
+.image_container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.img_backview {
+  padding: 10rpx;
+  border: 1rpx solid lightgray;
+  margin-left: 10rpx;
+}
+
+.img_view {
+  width: 150rpx;
+  height: 150rpx;
+}
+

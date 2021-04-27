@@ -1,0 +1,141 @@
+/* pages/assembly/assembly.wxss */
+
+.tapView {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn{
+  float: left;
+  border: 1rpx solid red;
+  font-size: 20rpx;
+  width: 40%;
+  text-align: center;
+}
+
+.btn:last-of-type{
+  margin-left: 10rpx;
+}
+
+/* view */
+.section {
+  width: 400rpx;
+  height: 400rpx;
+  background-color: purple;
+  margin-top: 50rpx;
+}
+
+.vw {
+  width: 300rpx;
+  height: 300rpx;
+  background-color: red;
+}
+
+.vw-hover-container {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* scroll */
+.sc-parent {
+  margin-top: 20rpx;
+}
+
+.scroll-view-item {
+  width: 300rpx;
+  height: 200rpx;
+}
+
+.bc_green {
+  background-color: green;
+}
+
+.bc_red {
+  background-color: red;
+}
+
+.bc_yellow {
+  background-color: yellow;
+}
+
+.bc_blue {
+  background-color: blue;
+}
+
+/* swiper */
+.swiper-item {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: blue;
+  color: white;
+  font-size: 36rpx;
+  height: 100%;
+}
+
+.swiper-item::before{
+  content: 'A';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.demo-text-2{background-color: red;}
+
+.demo-text-3{background-color: green;}
+
+.demo-text-2::before {content: 'B';}
+
+.demo-text-3::before{content: 'C';}
+
+
+/* move */
+.move-are {
+  background-color: red;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.move-view {
+  background-color: blue;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.big-move-view {
+  width: 210rpx;
+  height: 210rpx;
+}
+
+/* cover */
+.map {
+  width: 100%;
+  height: 300rpx;
+}
+
+.father-cover {
+  display: flex;
+   position: absolute;
+  top: calc(60% - 50rpx);
+  left: calc(50% - 50rpx);
+}
+
+.cover-item {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.cover-1{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.cover-2{
+  background-color: rgba(0, 200, 0, 0.7);
+}
+
+.cover-3{
+  background-color: rgba(0, 0, 200, 0.7);
+}
+

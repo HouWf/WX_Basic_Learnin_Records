@@ -1,0 +1,102 @@
+<!-- 组件基础 -- 基础内容组件 -->
+<!-- 
+   基础内容组件
+   icon
+   text
+   rech-text
+   progress
+  -->
+
+<!-- 
+    图标组件： icon
+    type icon的类型，
+          有效值：success, success_no_circle, info, warn, waiting, cancel, download, search, clear
+    size 大小
+    color 颜色
+   -->
+<view class="sc-parent">
+  <!-- <icon type="success" size="50"></icon> -->
+  <view class="icon-box">
+    <icon class="icon-box-img" type="success" size="93"></icon>
+    <view class="icon-box-ctn">
+      <view class="icon-box-title">成功</view>
+      <view class="icon-box-desc">用于表示操作顺利完成</view>
+    </view>
+  </view>
+
+  <view class="icon-box">
+    <icon class="icon-box-img" type="warn" size="93"></icon>
+    <view class="icon-box-ctn">
+      <view class="icon-box-title">普通警告</view>
+      <view class="icon-box-desc">用于表示操作后将引起一定后果的情况；也用于表示由于系统原因而造成的负向结果</view>
+    </view>
+  </view>
+  
+  <icon type="success_no_circle" size="50"></icon>
+  <icon type="info" size="50"></icon>
+  <icon type="waiting" size="50"></icon>
+  <icon type="cancel" size="50"></icon>
+  <icon type="download" size="50"></icon>
+  <icon type="search" size="50"></icon>
+  <icon type="clear" size="50"></icon>
+</view>
+
+<!-- 
+  文本组件： text
+  selectable 文本长按是否可选（已弃用）
+  user-select 文本是否可选，该属性会使文本节点显示为 inline-block
+  space 显示连续空格大小（emsp 一个中文空格大小）
+  decode 是否解码
+
+  ensp	中文字符空格一半大小	
+  emsp	中文字符空格大小	
+  nbsp	根据字体设置的空格大小
+-->
+<view class="sc-parent">
+  <text user-select="true" space="emsp" decode="ture">Lorem     &nbsp ipsum dolor sit amet consectetur, adipisicing elit. Error doloremque architecto quia neque similique optio, vitae quis accusamus officiis sint officia labore dolores eum rem iure exercitationem adipisci reprehenderit quos.</text>
+</view>
+
+<!-- 
+  富文本组件 rich-text
+  nodes  array/string 节点列表/HTML String
+  space 是否显示连续空格
+
+  nodes说明
+  name：string 标签名
+  attrs： object 属性
+  children： array 子节点列表 内容与nodes一致
+ -->
+
+ <view class="sc-parent">
+   <rich-text nodes="{{nodes1}}" bindtap="tap">
+     <!-- 不可嵌套 所以无法执行 -->
+      <rich-text nodes="{{nodes2}}"></rich-text>
+   </rich-text>
+ </view>
+
+ <!-- 
+   进度条 progress
+   percent 百分比
+   show-info 右侧是否显示百分比
+   font-size 右侧百分比文字大小
+   border-radius 圆角大小
+   stroke-width 宽度
+   color 颜色（不再使用）
+   activeColor 已选择的进度条颜色
+   backgroundColor 未选择的进度条颜色
+   active 是否显示从左到右的动画
+   active-mode 动画播放方式，backwards: 动画从头播；forwards：动画从上次结束点接着播
+   duration 进度条增加1%所需要的毫秒数
+   bindactiveend 动画完成后执行的事件
+  -->
+  <view class="sc-parent">
+    <view class="progress-box">
+      <progress percent="30" stroke-width="3" show-info="true"></progress>
+    </view>
+
+    <view class="progress-box">
+      <progress percent="40" stroke-width="3" ></progress>
+      <icon class="progress-cancel" type="cancel"></icon>
+    </view>
+
+  </view>

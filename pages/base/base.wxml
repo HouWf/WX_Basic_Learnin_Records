@@ -1,0 +1,97 @@
+
+<!-- wxml 基础 -->
+
+<!-- 
+  列表渲染：
+  for：循环内容 
+  for-item：指定的变量名 
+  key：列表的唯一标识符，应该使用列表属性中的唯一属性作为元素 
+-->
+<view class="temptitle">列表渲染:</view>
+<block wx:for="{{items}}" wx:for-item="ittttem" wx:key="index">
+  <view class="list">{{index + 1}} : {{ittttem.name}}</view>
+</block>
+
+<!-- 
+  条件渲染
+    wx:if 
+ -->
+<view class="temptitle"> 条件渲染:</view>
+<view>今天吃什么？</view>
+<block wx:if="{{codition == 1}}">饺子</block>
+<block wx:elif="{{codition == 2}}">面条</block>
+<block wx:else>米饭</block>
+
+<!-- 
+   模板引用
+  -->
+<!-- 方式一 当前文件引用 -->
+<view class="temptitle"> 模板：方式一 当前文件引用:</view>
+<template name="templateItem">
+  <view class="temp">
+    <view>收件人:{{name}}</view>
+    <view>联系方式:{{phone}}</view>
+    <view>地址:{{address}}</view>
+  </view>
+</template>
+
+<template is='templateItem' data="{{...tempItem}}"></template>
+
+<!-- 方式二 外部文件引用-->
+<import src="../template/userInfoTemp.wxml"></import>
+<view class="temptitle"> 模板：方式二 外部文件引用:</view>
+<block wx:if="{{choseTemp == 1}}">
+  <!-- 
+    ...tempItem 展开tempItem，传递参数name:"张三", phone: '10000000000',address: '中国'
+   -->
+  <template is='userInfoTemp' data="{{...tempItem}}"></template>
+</block>
+<block wx:else>
+  <view>当前模板不可用</view>
+</block>
+
+<!-- wxml共同属性
+    id:
+    class:
+    style:
+    hidden:
+    data-*: 自定义属性，组件触发事件时，会发送给事件处理函数
+    bind/catch: 
+-->
+
+<!-- wxml特性
+  数据绑定 
+      {{message}}、{{flag ? true : false}}
+
+  列表渲染
+      <block wx:for="{{item}}" wx:for-item="new-item" wx:key="唯一关键字或者*this"></block>
+      遍历item。默认提供index和item。
+      wx:for-index="重命名index"
+      wx:for-item="重命名item" 
+      wx:key="唯一关键字，数据绑定使用"
+
+  条件渲染
+      <block wx:if='{{}}'></block> 
+      <block wx:elif="{{}}"></block> 
+      <block wx:else></block>
+
+  模板引用
+    定义    
+      <template name='temp'></template>
+    使用
+      <import srd="xxxtmplate.wxml" />
+      <template is="temp" data="{{...item}}" />
+
+  文件引用
+      wxml: <import src="../template/userInfoTemp.wxml"></import>
+      wxss：@import '../template/userInfoTemp.wxss';
+
+      import: 模板内部不可相互引用,避免引用死循环，作用域是当前文件
+      include 全部引用，相当于除模板<template/> <wxs/>以外的所有代码全部引入
+-->
+
+
+<!-- 
+  wxs 对js的封装
+
+ -->

@@ -1,0 +1,134 @@
+
+{
+  "默认启动路径，不设置时默认pages第一个": "entryPagePath",
+
+
+
+  "pages":[
+
+    "pages/customComponent/customCom",
+
+    "pages/object/stringObj",
+    "pages/object/NumberObj",
+    "pages/object/MathObj",
+    "pages/object/dateObj",
+    "pages/object/arrayObj",
+
+
+    "pages/index/index",
+
+    "pages/tabbar/first",
+    "pages/animate/animate",
+    "pages/apigroup/Interface/Interface",
+    "pages/apigroup/route/route",
+    "pages/apigroup/base/apibase",
+    "pages/apigroup/network",
+    
+    "pages/assembly/canvas/canvas",
+    "pages/assembly/map/map",
+    "pages/assembly/media/media",
+    "pages/assembly/navigator/navigator",
+    "pages/assembly/form/form",
+    "pages/assembly/baseAss/baseAss",
+    "pages/assembly/assembly",
+
+    "pages/tabbar/storage/storage",
+    "pages/tabbar/media/media",
+    "pages/tabbar/location/location",
+    "pages/tabbar/share/share",
+
+    "pages/tabbar/media/map/mapApi",
+    "pages/tabbar/media/picture/picture",
+    "pages/tabbar/media/vide/videoapi",
+
+    "pages/base/base",
+    "pages/logs/logs"
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black",
+
+    "导航栏样式":"navigationStyle=default/custom",
+    "窗口背景色":"backgroundColor=#ffffff",
+    "下拉文字样式":"backgroundTextStyle=dark / light",
+    "支持下拉刷新":"enablePullDownRefresh",
+    "页面上拉触底事件触发时距页面底部距离":"onReachBottomDistance",
+    "屏幕旋转":"pageOrientation"
+
+  },
+
+  "可表明启用新版的组件样式":"7.0+",
+  "style": "v2",
+
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#328EEB",
+    "backgroundColor": "#ffffff",
+    "tabbar 上边框的颜色， 仅支持 black / white":"borderStyle",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [{
+      "pagePath": "pages/tabbar/first",
+      "text": "tabbar",
+      "iconPath": "pages/img/first_nor.png",
+      "selectedIconPath": "pages/img/first_sel.png"
+    },
+    {
+      "pagePath": "pages/animate/animate",
+      "text": "animate",
+      "iconPath": "pages/img/first_nor.png",
+      "selectedIconPath": "pages/img/first_sel.png"
+    },
+    {
+      "pagePath": "pages/apigroup/Interface/Interface",
+      "text": "interface",
+      "iconPath": "pages/img/interface_nor.png",
+      "selectedIconPath": "pages/img/interface_sel.png"
+    }]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "debug": false,
+
+  "尺寸变更：iPad上支持旋转，PC上支持拖拽":"",
+  "resizable": false,
+
+  "requiredBackgroundModes": ["audio", "location"],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "希望获取定位"
+    },
+    "scope.userLocationBackground":{
+      "desc":"后台定位"
+    },
+    "scope.address":{
+      "desc":"通讯地址（已取消授权，可以直接调用对应接口）"
+    },
+    "scope.invoiceTitle":{
+      "desc":"发票抬头（已取消授权，可以直接调用对应接口）"
+    },
+    "scope.invoice":{
+      "desc":"获取发票（已取消授权，可以直接调用对应接口）"
+    },
+    "scope.werun":{
+      "desc":"微信运动步数"
+    },
+    "scope.record":{
+      "desc":"录音功能"
+    },
+    "scope.writePhotosAlbum":{
+      "desc":"保存到相册"
+    },
+    "scope.camera":{
+      "desc":"摄像头"
+    }
+  }
+}

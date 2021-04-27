@@ -1,0 +1,17 @@
+
+<view class="body">
+  <view class="image_container">
+    <block wx:for="{{images}}">
+      <view class="img_backview" wx:key="{{index}}">
+        <image src="{{item}}" class="img_view" mode="aspectFill" bindtap="previewImage" data-index="{{index}}"></image>
+      </view>
+    </block>
+  </view>
+
+  <view class="choose_img_container">
+    <view class="img_backview" bindtap="chooseImg">
+      <view>从本地选择图片</view>
+      <image src="{{imgFilePath}}" class="img_view"></image>
+    </view>
+  </view>
+</view>

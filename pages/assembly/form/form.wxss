@@ -1,0 +1,27 @@
+/* pages/form/form.wxss */
+
+.parent {
+  background-color: #f3f3f3;
+}
+
+.page-section {
+  margin: 20rpx 0;
+}
+
+.weui-cell_title {
+  font-size: 30rpx;
+  color: lightgray;
+}
+
+.weui-cells {
+  background-color: white;
+
+}
+
+.weui-input {
+  border: 1rpx solid lightgray;
+  line-height: 60rpx;
+  font-size: 40rpx;
+  height: 60rpx;
+  padding: 10rpx 0;
+}
